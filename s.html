@@ -1,212 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ansell Clone Navbar</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Mega Menu</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      
+      margin: 0;
     }
+
     header {
       background: #fff;
       border-bottom: 1px solid #ddd;
-      
     }
+
+    .header-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+    }
+
+    .logo {
+      max-height: 60px;
+    }
+
+    .navmenu {
+      display: flex;
+    }
+
     .navmenu ul {
       list-style: none;
-      padding: 0;
       margin: 0;
+      padding: 0;
       display: flex;
-      gap: 30px;
       align-items: center;
-      
+      gap: 30px;
     }
+
     .navmenu ul li {
       position: relative;
-     
     }
-    .mexi{
-       margin-right: 100px;
-    }
+
     .navmenu ul li a {
       text-decoration: none;
       color: #000;
       font-weight: 500;
-       margin-right: 50px;
     }
-    
+
     .mega-menu {
       position: absolute;
       top: 100%;
       left: 0;
-      width: 80vw;
+      width: 100vw;
       background: #fff;
-      box-shadow: 0 8px 16px rgba(174, 143, 143, 0.1);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
       display: none;
-      padding: 20px 40px;
+      padding: 30px 60px;
       z-index: 1000;
-      
     }
-    .navmenu ul li:hover .mega-menu {
+
+    .mega-menu.show {
+      top: 100px;
       display: block;
     }
+
     .section-title {
       font-weight: 600;
       color: #8a2042;
       margin-bottom: 10px;
     }
+
     .underline {
       height: 2px;
       background: #8a2042;
       width: 40px;
       margin-bottom: 15px;
     }
+
     .description {
       font-size: 14px;
       color: #333;
     }
-    .product-types-line {
-      margin-bottom: 25px;
-    }
+
     .mega-menu a {
       font-size: 14px;
       color: #000;
       text-decoration: none;
-      display: block;
-      margin-bottom: 10px;
+      display: inline-block;
+      margin: 0 20px 10px 0;
+      min-width: 180px;
     }
+
     .mega-menu a:hover {
       text-decoration: underline;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      background: none;
+      border: none;
+    }
+
+    /* Mobile View */
+    @media (max-width: 768px) {
+      .header-wrap {
+        padding: 15px 20px;
+      }
+
+      .menu-toggle {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 22px;
+        z-index: 1001;
+      }
+
+      .navmenu {
+        width: 100%;
+        flex-direction: column;
+        display: none;
+      }
+
+      .navmenu.show {
+        display: flex;
+        padding-top: 70px;
+      }
+
+      .navmenu ul {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        padding: 0 20px;
+      }
+
+      .mega-menu {
+        position: static;
+        padding: 20px;
+        display: none;
+      }
+
+      .mega-menu.show {
+        display: block;
+        top: auto;
+      }
+
+      .mega-menu .row {
+        flex-direction: column;
+      }
+
+      .mega-menu .d-flex {
+        flex-direction: column;
+      }
+
+      .mega-menu a {
+        min-width: unset;
+        margin: 5px 0;
+      }
     }
   </style>
 </head>
 <body>
 
-<header class="py-3">
-  <div class="container-fluid d-flex align-items-center justify-content-between px-4">
-    <a href="#"><img src="assets/img/AI-LOGO-1.png" alt="Logo" style="max-height:60px;"></a>
-
-    <nav class="navmenu">
+<header>
+  <div class="header-wrap position-relative">
+    <a href="#"><img src="assets/img/AI-LOGO-1.png" alt="Logo" class="logo"></a>
+    <button class="menu-toggle" onclick="toggleMenu()" id="menuBtn"><i class="bi bi-list"></i></button>
+    <nav class="navmenu" id="mainNav">
       <ul class="mb-0">
-        <li class="">
-          <a class="" href="#">Products <i class="bi bi-chevron-down ms-1"></i></a>
-          <div class="mega-menu">
-            <div class="container">
-              <div class="row">
-              
-              
-                <div class="col-md-9">
-                  <h5 class="section-title">Product Types</h5>
-                  <div class="underline product-types-line"></div>
-                  <div class="row">
-                    <div class="col-md-4">
-                      <a href="#">Smart Lighting</a>
-                      <a href="#">Downlights</a>
-                      <a href="#">Track Lighting</a>
-                      <a href="#">Pendants</a>
-                      <a href="#">Wall Lights</a>
-                      <a href="#">LED Strip</a>
-                      <a href="#">Bespoke LED Strip Service</a>
-                      <a href="#">Cabinet and Bathroom Fittings</a>
-                    </div>
-                    <div class="col-md-4">
-                      <a href="#">Bulkheads</a>
-                      <a href="#">Bollards</a>
-                      <a href="#">Feature Lighting</a>
-                      <a href="#">Floodlights</a>
-                      <a href="#">Street Lights</a>
-                      <a href="#">High/Low Bay</a>
-                      <a href="#">Battens and Weatherproofs</a>
-                      <a href="#">Commercial Linear</a>
-                    </div>
-                    <div class="col-md-4">
-                      <a href="#">Commercial Modular</a>
-                      <a href="#">Emergency</a>
-                      <a href="#">AFIX</a>
-                      <a href="#">Electrical Accessories</a>
-                      <a href="#">Product Data Downloads</a>
-                      <a href="#">Inspiration</a>
-                    </div>
-                  </div>
-                </div>
-
-                 <div class="col-md-9">
-                  <h5 class="section-title">Product Types</h5>
-                  <div class="underline product-types-line"></div>
-                  <div class="row">
-                    <div class="col-md-4">
-                      <a href="#">Smart Lighting</a>
-                      <a href="#">Downlights</a>
-                      <a href="#">Track Lighting</a>
-                      <a href="#">Pendants</a>
-                      <a href="#">Wall Lights</a>
-                      <a href="#">LED Strip</a>
-                      <a href="#">Bespoke LED Strip Service</a>
-                      <a href="#">Cabinet and Bathroom Fittings</a>
-                    </div>
-                    <div class="col-md-4">
-                      <a href="#">Bulkheads</a>
-                      <a href="#">Bollards</a>
-                      <a href="#">Feature Lighting</a>
-                      <a href="#">Floodlights</a>
-                      <a href="#">Street Lights</a>
-                      <a href="#">High/Low Bay</a>
-                      <a href="#">Battens and Weatherproofs</a>
-                      <a href="#">Commercial Linear</a>
-                    </div>
-                    <div class="col-md-4">
-                      <a href="#">Commercial Modular</a>
-                      <a href="#">Emergency</a>
-                      <a href="#">AFIX</a>
-                      <a href="#">Electrical Accessories</a>
-                      <a href="#">Product Data Downloads</a>
-                      <a href="#">Inspiration</a>
-                    </div>
-                  </div>
-                </div>
-
-                 <div class="col-md-9">
-                  <h5 class="section-title">Product Types</h5>
-                  <div class="underline product-types-line"></div>
-                  <div class="row">
-                    <div class="col-md-4">
-                      <a href="#">Smart Lighting</a>
-                      <a href="#">Downlights</a>
-                      <a href="#">Track Lighting</a>
-                      <a href="#">Pendants</a>
-                      <a href="#">Wall Lights</a>
-                      <a href="#">LED Strip</a>
-                      <a href="#">Bespoke LED Strip Service</a>
-                      <a href="#">Cabinet and Bathroom Fittings</a>
-                    </div>
-                    <div class="col-md-4">
-                      <a href="#">Bulkheads</a>
-                      <a href="#">Bollards</a>
-                      <a href="#">Feature Lighting</a>
-                      <a href="#">Floodlights</a>
-                      <a href="#">Street Lights</a>
-                      <a href="#">High/Low Bay</a>
-                      <a href="#">Battens and Weatherproofs</a>
-                      <a href="#">Commercial Linear</a>
-                    </div>
-                    <div class="col-md-4">
-                      <a href="#">Commercial Modular</a>
-                      <a href="#">Emergency</a>
-                      <a href="#">AFIX</a>
-                      <a href="#">Electrical Accessories</a>
-                      <a href="#">Product Data Downloads</a>
-                      <a href="#">Inspiration</a>
-                    </div>
-                  </div>
-                </div>
-            
-              </div>
-            </div>
-          </div>
+        <li>
+          <a href="#" onclick="toggleMegaMenu(event)">Products <i class="bi bi-chevron-down ms-1"></i></a>
         </li>
         <li><a href="#">Sectors</a></li>
         <li><a href="#">OCTO</a></li>
@@ -217,8 +184,73 @@
       </ul>
     </nav>
   </div>
+
+  <div id="megaMenu" class="mega-menu">
+    <div class="row">
+      <div class="col-md-3">
+        <h5 class="section-title">Products</h5>
+        <div class="underline"></div>
+        <p class="description">
+          We are a leading manufacturer of quality internal and external lighting products for commercial, industrial and retail applications.
+        </p>
+        <a href="#" style="color:#8a2042; font-weight:600;">View all products <i class="bi bi-arrow-right"></i></a>
+      </div>
+      <div class="col-md-9">
+        <h5 class="section-title">Product Types</h5>
+        <div class="underline"></div>
+        <div class="d-flex flex-wrap">
+          <a href="#">Smart Lighting</a>
+          <a href="#">Downlights</a>
+          <a href="#">Track Lighting</a>
+          <a href="#">Pendants</a>
+          <a href="#">Wall Lights</a>
+          <a href="#">LED Strip</a>
+          <a href="#">Bespoke LED Strip Service</a>
+          <a href="#">Cabinet and Bathroom Fittings</a>
+          <a href="#">Bulkheads</a>
+          <a href="#">Bollards</a>
+          <a href="#">Feature Lighting</a>
+          <a href="#">Floodlights</a>
+          <a href="#">Street Lights</a>
+          <a href="#">High/Low Bay</a>
+          <a href="#">Battens and Weatherproofs</a>
+          <a href="#">Commercial Linear</a>
+          <a href="#">Commercial Modular</a>
+          <a href="#">Emergency</a>
+          <a href="#">AFIX</a>
+          <a href="#">Electrical Accessories</a>
+          <a href="#">Product Data Downloads</a>
+          <a href="#">Inspiration</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function toggleMegaMenu(event) {
+    event.preventDefault();
+    const menu = document.getElementById('megaMenu');
+    menu.classList.toggle('show');
+  }
+
+  function toggleMenu() {
+    const nav = document.getElementById('mainNav');
+    const btn = document.getElementById('menuBtn');
+    nav.classList.toggle('show');
+    btn.innerHTML = nav.classList.contains('show')
+      ? '<i class="bi bi-x-lg"></i>'
+      : '<i class="bi bi-list"></i>';
+  }
+
+  document.addEventListener('click', function (e) {
+    const menu = document.getElementById('megaMenu');
+    const nav = document.getElementById('mainNav');
+    if (!e.target.closest('.navmenu') && !e.target.closest('#megaMenu') && !e.target.closest('#menuBtn')) {
+      menu.classList.remove('show');
+    }
+  });
+</script>
+
 </body>
 </html>

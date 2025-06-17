@@ -41,66 +41,35 @@
 
     <nav class="navmenu position-relative">
       <ul>
-      <li onmouseenter="show()" onmouseleave="hide()" style="position:relative;">
-  <a href="#">
-    Products <i class="bi bi-chevron-down ms-1"></i>
-  </a>
-
-  <div class="mega-menu" id="mega">
-    <div class="container">
-      <div class="row">
-
-        <!-- LEFT: PRODUCTS -->
-        <div class="col-md-4">
-          <h5 class="section-title">Products</h5>
-          <div class="underline"></div>
-          <p class="description">
-            Explore a wide range of high-performance lighting solutions<br>
-            designed for industrial, commercial, and domestic applications.<br>
-            Trusted for reliability, design, and sustainability.
-          </p>
-        </div>
-
-        <!-- RIGHT: PRODUCT TYPES -->
-        <div class="col-md-8">
-          <h5 class="section-title">Product Types</h5>
-          <div class="underline product-types-line"></div>
-
-          <div class="row">
-            <!-- Column 1 -->
-            <div class="col-4">
-              <ul class="list-unstyled">
-                <li><a href="#">Smart Lighting</a></li>
-                <li><a href="#">Downlights</a></li>
-                <li><a href="#">Track Lighting</a></li>
-              </ul>
-            </div>
-
-            <!-- Column 2 -->
-            <div class="col-4">
-              <ul class="list-unstyled">
-                <li><a href="#">Bulkheads</a></li>
-                <li><a href="#">High Bays</a></li>
-                <li><a href="#">Flood Lights</a></li>
-              </ul>
-            </div>
-
-            <!-- Column 3 -->
-            <div class="col-4">
-              <ul class="list-unstyled">
-                <li><a href="#">Commercial Modular</a></li>
-                <li><a href="#">Linear Lights</a></li>
-                <li><a href="#">Emergency Lights</a></li>
-              </ul>
+        <li onmouseenter="show()" onmouseleave="hide()" style="position:relative;">
+          <a href="#">Products</a>
+          <div class="mega-menu" id="mega">
+            <div class="container">
+              <h6 style="color:#80003c; font-weight:bold;">Product Types</h6>
+              <div class="row">
+                <div class="col-4">
+                  <ul>
+                    <li><a href="#">Smart Lighting</a></li>
+                    <li><a href="#">Downlights</a></li>
+                    <!-- more -->
+                  </ul>
+                </div>
+                <div class="col-4">
+                  <ul>
+                    <li><a href="#">Bulkheads</a></li>
+                    <!-- ... -->
+                  </ul>
+                </div>
+                <div class="col-4">
+                  <ul>
+                    <li><a href="#">Commercial Modular</a></li>
+                    <!-- ... -->
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</li>
-
+        </li>
         <li><a href="#">Sectors</a></li>
         <li><a href="#">OCTO</a></li>
         <li><a href="#">Support & Training</a></li>
@@ -184,8 +153,7 @@
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
