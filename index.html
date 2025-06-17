@@ -10,6 +10,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 
   <!-- Favicons -->
   <link href="assets/img/AI-LOGO-1.png" rel="icon">
@@ -36,39 +38,13 @@
 <body class="index-page">
 <!-- ✅ Fully Working Ansell-style Navbar with Product Mega Dropdown -->
 <header>
-  <div class="container-fluid d-flex align-items-center justify-content-between">
-    <a href="#"><img src="assets/img/AI-LOGO-1.png" alt="Logo" style="max-height:60px;"></a>
-
-    <nav class="navmenu position-relative">
-      <ul>
-        <li onmouseenter="show()" onmouseleave="hide()" style="position:relative;">
-          <a href="#">Products</a>
-          <div class="mega-menu" id="mega">
-            <div class="container">
-              <h6 style="color:#80003c; font-weight:bold;">Product Types</h6>
-              <div class="row">
-                <div class="col-4">
-                  <ul>
-                    <li><a href="#">Smart Lighting</a></li>
-                    <li><a href="#">Downlights</a></li>
-                    <!-- more -->
-                  </ul>
-                </div>
-                <div class="col-4">
-                  <ul>
-                    <li><a href="#">Bulkheads</a></li>
-                    <!-- ... -->
-                  </ul>
-                </div>
-                <div class="col-4">
-                  <ul>
-                    <li><a href="#">Commercial Modular</a></li>
-                    <!-- ... -->
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+  <div class="header-wrap position-relative">
+    <a href="#"><img src="assets/img/AI-LOGO-1.png" alt="Logo" class="logo"></a>
+    <button class="menu-toggle" onclick="toggleMenu()" id="menuBtn"><i class="bi bi-list"></i></button>
+    <nav class="navmenu" id="mainNav">
+      <ul class="mb-0">
+        <li>
+          <a href="#" onclick="toggleMegaMenu(event)">Products <i class="bi bi-chevron-down ms-1"></i></a>
         </li>
         <li><a href="#">Sectors</a></li>
         <li><a href="#">OCTO</a></li>
@@ -78,15 +54,74 @@
         <li><a href="#"><i class="bi bi-search"></i></a></li>
       </ul>
     </nav>
+  </div>
 
-    <div class="header-social-links d-flex">
-      <a href="#"><i class="bi bi-twitter"></i></a>
-      <a href="#"><i class="bi bi-facebook"></i></a>
-      <a href="#"><i class="bi bi-instagram"></i></a>
-      <a href="#"><i class="bi bi-linkedin"></i></a>
+  <div id="megaMenu" class="mega-menu">
+    <div class="row">
+      <div class="col-md-3">
+        <h5 class="section-title">Products</h5>
+        <div class="underline"></div>
+        <p class="description">
+          We are a leading manufacturer of quality internal and external lighting products for commercial, industrial and retail applications.
+        </p>
+        <a href="#" style="color:#8a2042; font-weight:600;">View all products <i class="bi bi-arrow-right"></i></a>
+      </div>
+      <div class="col-md-9">
+        <h5 class="section-title">Product Types</h5>
+        <div class="underline"></div>
+        <div class="d-flex flex-wrap">
+          <a href="#">Smart Lighting</a>
+          <a href="#">Downlights</a>
+          <a href="#">Track Lighting</a>
+          <a href="#">Pendants</a>
+          <a href="#">Wall Lights</a>
+          <a href="#">LED Strip</a>
+          <a href="#">Bespoke LED Strip Service</a>
+          <a href="#">Cabinet and Bathroom Fittings</a>
+          <a href="#">Bulkheads</a>
+          <a href="#">Bollards</a>
+          <a href="#">Feature Lighting</a>
+          <a href="#">Floodlights</a>
+          <a href="#">Street Lights</a>
+          <a href="#">High/Low Bay</a>
+          <a href="#">Battens and Weatherproofs</a>
+          <a href="#">Commercial Linear</a>
+          <a href="#">Commercial Modular</a>
+          <a href="#">Emergency</a>
+          <a href="#">AFIX</a>
+          <a href="#">Electrical Accessories</a>
+          <a href="#">Product Data Downloads</a>
+          <a href="#">Inspiration</a>
+        </div>
+      </div>
     </div>
   </div>
 </header>
+
+<script>
+  function toggleMegaMenu(event) {
+    event.preventDefault();
+    const menu = document.getElementById('megaMenu');
+    menu.classList.toggle('show');
+  }
+
+  function toggleMenu() {
+    const nav = document.getElementById('mainNav');
+    const btn = document.getElementById('menuBtn');
+    nav.classList.toggle('show');
+    btn.innerHTML = nav.classList.contains('show')
+      ? '<i class="bi bi-x-lg"></i>'
+      : '<i class="bi bi-list"></i>';
+  }
+
+  document.addEventListener('click', function (e) {
+    const menu = document.getElementById('megaMenu');
+    const nav = document.getElementById('mainNav');
+    if (!e.target.closest('.navmenu') && !e.target.closest('#megaMenu') && !e.target.closest('#menuBtn')) {
+      menu.classList.remove('show');
+    }
+  });
+</script>
 
 
 <!-- Styles -->
@@ -147,7 +182,6 @@
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a href=“https://themewagon.com>ThemeWagon
       </div>
     </div>
-
   </footer>
 
   <!-- Scroll Top -->
